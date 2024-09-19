@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 350px; /* Slightly wider for better readability */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px); /* Full width minus padding and border */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#message {
+    font-size: 16px;
+    color: #ff0000; /* Red color for error messages */
+    margin-top: 10px;
+}
+
+#chances {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+#hint {
+    font-size: 16px;
+    color: #007bff; /* Blue color for hints */
+    margin-top: 10px;
+    text-align: left;
+}
+
+.hint-item {
+    margin-bottom: 5px;
+}
+
+.hint-number {
+    font-weight: bold;
+    color: #333;
+    margin-right: 5px;
+}
