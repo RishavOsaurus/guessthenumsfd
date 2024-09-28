@@ -10,11 +10,12 @@
     <div class="container">
         <h1>Guess the Number Game</h1>
         <p>Guess a number between 1 and 100. You have 5 attempts to guess the correct number.</p>
-        <input type="text" id="guessInput" placeholder="Enter your guess">
-        <button onclick="makeGuess()">Submit Guess</button>
-        <p id="message"></p>
-        <p id="chances">You have 5 chances left.</p>
         <p id="hint"></p>
+        <p id="message"></p>
+        <input type="text" id="guessInput" placeholder="Enter your guess">
+        <p id="chances">Chances Remaining: 5.</p>
+        <div id="history-container" hidden>History: <div id="history"></div></div>
+        <button id="submitButton" onclick="makeGuess()">Submit Guess</button>
     </div>
     <script src="script.js"></script>
 </body>

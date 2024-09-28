@@ -37,6 +37,8 @@ function makeGuess() {
     const messageElement = document.getElementById('message');
     const hintElement = document.getElementById('hint');
     const chancesElement = document.getElementById('chances');
+    const historyContElement = document.getElementById('history-container');
+    const historyElement = document.getElementById('history');
 
     // Validate the input
     const guessNumber = parseInt(guess, 10);
@@ -47,17 +49,32 @@ function makeGuess() {
 
     if (guessNumber === number) {
         messageElement.textContent = 'Congratulations! You guessed it right!';
+        messageElement.style = "color: #218838;"
         hintElement.innerHTML = ''; // Clear hints if correct
+        historyContElement.hidden = true
+        while (historyElement.firstChild) {
+            historyElement.removeChild(historyElement.lastChild)
+        }
         return;
     } else if (guessNumber > number) {
-        messageElement.textContent = 'high!';
+        messageElement.textContent = 'Lower!';
     } else {
-        messageElement.textContent = 'low!';
+        messageElement.textContent = 'Higher!';
     }
+
+    historyContElement.hidden = false
+    let newHistory = document.createElement("span")
+    newHistory.textContent = `${guessNumber}`
+    historyElement.appendChild(newHistory)
 
     if (chances > 1) {
         chances--;
-        chancesElement.textContent = `You have ${chances} chances left.`;
+        chancesElement.textContent = `Chances Remaining: ${chances}.`;
+        if (chances > 2){
+            chancesElement.style = "color: #218838;"
+        } else{
+            chancesElement.style = "color: #ff0000;"
+        }
 
         let hints = getHints();
         if (hintsGiven < hints.length) {
@@ -76,6 +93,10 @@ function makeGuess() {
         }
     } else {
         messageElement.textContent = `Sorry, you're out of chances! The number was ${number}.`;
+        historyContElement.hidden = true
+        while(historyElement.firstChild){
+            historyElement.removeChild(historyElement.lastChild)
+        }
         hintElement.innerHTML = '';
         chancesElement.textContent = '';
     }
@@ -83,3 +104,11 @@ function makeGuess() {
     // Clear the input field after each guess
     guessInput.value = '';
 }
+
+const inputField = document.getElementById("guessInput")
+inputField.addEventListener("keypress", (e)=>{
+    if(e.key == "Enter"){
+        document.getElementById("submitButton").click()
+        inputField.innerHTML = ""
+    }
+})
